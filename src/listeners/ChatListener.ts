@@ -11,6 +11,6 @@ export default class ChatListener extends Listener {
     }
 
     public async exec(message: Message): Promise<void> {
-        console.log(`${message.member.user.tag} sent '${message.content}'`);
+//        console.log(`${message.member.user.tag} sent '${message.content}'`);
     }
 }
