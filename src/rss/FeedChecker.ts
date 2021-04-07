@@ -19,7 +19,7 @@ export default class FeedChecker {
     public start(): void {
         Scheduler.scheduleJob(this.config.rsspollinterval, () => {
             for (const feed of this.config.feeds) {
-                console.log("Checking: " + feed.url);
+//                console.log("Checking: " + feed.url);
                 this.checkRSS(feed);
             }
         });
