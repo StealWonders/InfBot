@@ -1,0 +1,55 @@
+{
+    "token": "",
+    "owners": [],
+    "feeds": [
+        {
+            "url": "https://<url>.rss",
+            "channels": [
+                "<channelid>"
+            ]
+        }
+    ],
+    "historyfor": 14,
+    "rsspollinterval": "* * * * *",
+    "storagecleaninterval": "0 0 * * *",
+    "resourcetypes": {
+        "file": ":file_folder:",
+        "tst": ":pen_ballpoint:",
+        "mcst": ":movie_camera:"
+    },
+    "filestatus": {
+        "Die Datei wurde aktualisiert.": ":arrows_counterclockwise:"
+    },
+    "subjects": {
+        "Algorithmen und Datenstrukturen (WS2020/21)": {
+            "name": "Algorithmen und Datenstrukturen",
+            "color": "0x3498db",
+            "icon": "<:AuD:780701333056913421>"
+        },
+        "Mathematik für Ingenieure C1 (Wintersemester 2020/21)": {
+            "name": "Mathematik für Ingenieure C1",
+            "color": "0xf1c40f",
+            "icon": ":abacus:"
+        },
+        "Konzeptionelle Modellierung [KonzMod] 2020WS": {
+            "name": "Konzeptionelle Modellierung",
+            "color": "0xe74c3c",
+            "icon": "<:KonzMod:778981521868193822>"
+        },
+        "Übungen zu Konzeptionelle Modellierung [UeKonzMod] 2020WS": {
+            "name": "Übungen zu Konzeptionelle Modellierung",
+            "color": "0xe74c3c",
+            "icon": "<:KonzMod:778981521868193822>"
+        },
+        "Grundlagen der Technischen Informatik (WS 2020/2021)": {
+            "name": "Grundlagen der Technischen Informatik",
+            "color": "0x3ce74c",
+            "icon": "<:GTI:778980917553135616>"
+        },
+        "Mathematik für Ingenieure C2 (Sommersemester 2021)": {
+            "name": "Mathematik für Ingenieure C2",
+            "color": "0xf1c40f",
+            "icon": ":abacus:"
+        }
+    }
+}
