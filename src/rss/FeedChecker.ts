@@ -49,8 +49,8 @@ export default class FeedChecker {
 
                 // Item is not in storage → Send message
                 let fileName: string = parsedItem.fileName;
-                fileName = fileName.replaceAll("*", "\\*");
-                fileName = fileName.replaceAll("_", "\\_");
+                fileName = fileName.replace("/*/g", "\\*");
+                fileName = fileName.replace("/_/g", "\\_");
 
                 const message: MessageEmbed = new MessageEmbed()
                     .setTitle((parsedItem.statusIcon || '') + " " + resourceIcon + " " + parsedItem.subject.icon + " " + fileName)
