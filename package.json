@@ -10,10 +10,10 @@
   ],
   "license": "gpl-3.0",
   "scripts": {
-    "start": "node ./build/src/InfBot.js",
+    "start": "node ./build/InfBot.js",
     "build": "tsc",
     "install": "tsc",
-    "dev": "tsc && node ./build/src/InfBot.js"
+    "dev": "tsc && node ./build/InfBot.js"
   },
   "dependencies": {
     "@types/node": "^14.14.37",

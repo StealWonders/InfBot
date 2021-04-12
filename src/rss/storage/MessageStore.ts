@@ -1,6 +1,6 @@
 import { Item } from "rss-parser";
-import { entries } from "../../../storage.json";
 import * as fs from "fs";
+const storage = require("../../../storage.json");
 
 export default class MessageStore {
     private config: Config;
@@ -8,12 +8,12 @@ export default class MessageStore {
 
     public constructor(config: Config) {
         this.config = config;
-        this.storage = { entries };
+        this.storage = { entries: storage.entries };
     }
 
     public store(feed: Feed, item: Item): void {
         if (this.storage.entries[feed.url] == undefined) {
-            this.storage.entries[feed.url] = { };
+            this.storage.entries[feed.url] = {};
         }
         this.storage.entries[feed.url][item.link] = item.isoDate;
     }
