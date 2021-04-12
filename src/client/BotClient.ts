@@ -12,9 +12,9 @@ declare module "discord-akairo" {
 }
 
 export default class BotClient extends AkairoClient {
-    private config: Config;
+    public config: Config;
     private messageStore: MessageStore;
-    private feedChecker: FeedChecker;
+    public feedChecker: FeedChecker;
     private storageCleaner: StorageCleaner;
 
     public constructor(config: Config) {
