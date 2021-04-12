@@ -24,7 +24,7 @@ export default class MessageStore {
         return true;
     }
 
-    public save(feed: Feed): void {
+    public save(): void {
         fs.writeFile("./storage.json", JSON.stringify(this.storage, null, 4), err => {
             if (err) throw err;
         });

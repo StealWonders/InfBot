@@ -70,7 +70,7 @@ export default class FeedChecker {
                 }
             }
         }
-        this.messageStore.save(feed);
+        this.messageStore.save();
     }
 
     private getResourceIcon(item: Item): string {

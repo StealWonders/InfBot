@@ -14,6 +14,7 @@ export default class StorageCleaner {
     public start(): void {
         Scheduler.scheduleJob(this.config.storagecleaninterval, () => {
             this.messageStore.cleanup();
+            this.messageStore.save();
         });
     }
 }
