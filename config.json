@@ -28,28 +28,48 @@
         },
         "Mathematik für Ingenieure C1 (Wintersemester 2020/21)": {
             "name": "Mathematik für Ingenieure C1",
-            "color": "0xf1c40f",
+            "color": "#fff480",
             "icon": ":abacus:"
         },
         "Konzeptionelle Modellierung [KonzMod] 2020WS": {
             "name": "Konzeptionelle Modellierung",
-            "color": "0xe74c3c",
+            "color": "#ffbac7",
             "icon": "<:KonzMod:778981521868193822>"
         },
         "Übungen zu Konzeptionelle Modellierung [UeKonzMod] 2020WS": {
             "name": "Übungen zu Konzeptionelle Modellierung",
-            "color": "0xe74c3c",
+            "color": "#ffbac7",
             "icon": "<:KonzMod:778981521868193822>"
         },
         "Grundlagen der Technischen Informatik (WS 2020/2021)": {
             "name": "Grundlagen der Technischen Informatik",
-            "color": "0x3ce74c",
+            "color": "#424242",
             "icon": "<:GTI:778980917553135616>"
+        },
+        "Parallele und Funktionale Programmierung (SS2021)": {
+            "name": "Parallele und Funktionale Programmierung",
+            "color": "#bde4f9",
+            "icon": ":parachute:"
+        },
+        "Systemprogrammierung 1 + 2 (Übung)": {
+            "name": "Übungen zu Systemprogrammierung",
+            "color": "#dab4e8",
+            "icon": ":compression:"
         },
         "Mathematik für Ingenieure C2 (Sommersemester 2021)": {
             "name": "Mathematik für Ingenieure C2",
-            "color": "0xf1c40f",
+            "color": "#fff480",
             "icon": ":abacus:"
+        },
+        "Grundlagen der Rechnerarchitektur und -organisation (SS2021)": {
+            "name": "Grundlagen der Rechnerarchitektur und -organisation",
+            "color": "#ffbac7",
+            "icon": ":construction_site:"
+        },
+        "Grundlagen der Schaltungstechnik": {
+            "name": "Grundlagen der Schaltungstechnik",
+            "color": "#424242",
+            "icon": ":control_knobs:"
         }
     }
 }
