@@ -3,3 +3,5 @@
 
 package-lock.json
 yarn.lock
+config.json
+storage.json
