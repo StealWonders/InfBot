@@ -24,52 +24,52 @@
         "Algorithmen und Datenstrukturen (WS2020/21)": {
             "name": "Algorithmen und Datenstrukturen",
             "color": "#bde4f9",
-            "icon": "<:AuD:780701333056913421>"
+            "iconUrl": "https://www.ps.tf.fau.de/files/2020/03/ps.svg"
         },
         "Mathematik für Ingenieure C1 (Wintersemester 2020/21)": {
             "name": "Mathematik für Ingenieure C1",
             "color": "#fff480",
-            "icon": ":abacus:"
+            "iconUrl": ""
         },
         "Konzeptionelle Modellierung [KonzMod] 2020WS": {
             "name": "Konzeptionelle Modellierung",
             "color": "#ffbac7",
-            "icon": "<:KonzMod:778981521868193822>"
+            "iconUrl": "https://www.cs6.tf.fau.de/files/2018/05/cropped-inf6-logo-v5-final_database.png"
         },
         "Übungen zu Konzeptionelle Modellierung [UeKonzMod] 2020WS": {
             "name": "Übungen zu Konzeptionelle Modellierung",
             "color": "#ffbac7",
-            "icon": "<:KonzMod:778981521868193822>"
+            "iconUrl": "https://www.cs6.tf.fau.de/files/2018/05/cropped-inf6-logo-v5-final_database.png"
         },
         "Grundlagen der Technischen Informatik (WS 2020/2021)": {
             "name": "Grundlagen der Technischen Informatik",
             "color": "#424242",
-            "icon": "<:GTI:778980917553135616>"
+            "iconUrl": "https://www.cs12.tf.fau.de/files/2016/05/cropped-codesign_cms_headerbild.png"
         },
         "Parallele und Funktionale Programmierung (SS2021)": {
             "name": "Parallele und Funktionale Programmierung",
             "color": "#bde4f9",
-            "icon": ":parachute:"
+            "iconUrl": "https://www.ps.tf.fau.de/files/2020/03/ps.svg"
         },
         "Systemprogrammierung 1 + 2 (Übung)": {
             "name": "Übungen zu Systemprogrammierung",
             "color": "#dab4e8",
-            "icon": ":compression:"
+            "iconUrl": "https://www4.cs.fau.de/Img/final-headlogo-small.png"
         },
         "Mathematik für Ingenieure C2 (Sommersemester 2021)": {
             "name": "Mathematik für Ingenieure C2",
             "color": "#fff480",
-            "icon": ":abacus:"
+            "iconUrl": ""
         },
         "Grundlagen der Rechnerarchitektur und -organisation": {
             "name": "Grundlagen der Rechnerarchitektur und -organisation",
             "color": "#ffbac7",
-            "icon": "<:gra:832178945603928094>"
+            "iconUrl": "https://www.cs3.tf.fau.de/files/2018/07/logo2.png"
         },
         "Grundlagen der Schaltungstechnik": {
             "name": "Grundlagen der Schaltungstechnik",
             "color": "#B2FFB7",
-            "icon": ":control_knobs:"
+            "iconUrl": "https://www.like.tf.fau.de/files/2015/11/cropped-like_logo_final.png"
         }
     }
 }
