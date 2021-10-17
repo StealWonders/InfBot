@@ -1,4 +1,6 @@
-interface Config {
+import { Feed, Subject } from "./rss/types";
+
+export default interface Configuration {
     token?: string;
     owners?: string | string[];
     feeds?: Feed[];

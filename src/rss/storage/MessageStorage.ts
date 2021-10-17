@@ -1,13 +1,16 @@
 import { Item } from "rss-parser";
 import * as fs from "fs";
+import { Feed, FeedStorage } from "../types";
+import Configuration from "../../Configuration";
 const storage = require("../../../storage.json");
 
-export default class MessageStore {
-    private config: Config;
+export default class MessageStorage {
+
+    private configuration: Configuration;
     private storage: FeedStorage;
 
-    public constructor(config: Config) {
-        this.config = config;
+    public constructor(configuration: Configuration) {
+        this.configuration = configuration;
         this.storage = { entries: storage.entries };
     }
 
@@ -32,7 +35,7 @@ export default class MessageStore {
 
     public cleanup(): void {
         const maxDate: Date = new Date();
-        maxDate.setDate(maxDate.getDate() - this.config.historyfor);
+        maxDate.setDate(maxDate.getDate() - this.configuration.historyfor);
 
         for (const feed in this.storage.entries) {
             for (const key in this.storage.entries[feed]) {
