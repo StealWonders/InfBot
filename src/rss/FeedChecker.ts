@@ -1,4 +1,4 @@
-import { Channel, MessageEmbed, MessagePayload, TextChannel } from "discord.js";
+import { BaseGuildTextChannel, Channel, MessageEmbed, NewsChannel, TextChannel } from "discord.js";
 import * as Scheduler from "node-schedule";
 import Parser, { Item } from "rss-parser";
 import InfBot from "../InfBot"
@@ -69,7 +69,7 @@ export default class FeedChecker {
             }
         }
 
-        embeds = embeds.reverse();
+        // embeds = embeds.reverse();
 
         let messages: any = [];
 
@@ -85,13 +85,17 @@ export default class FeedChecker {
 
         for (const channelId of feed.channels) {
             const channel: Channel = await this.infBot.channels.fetch(channelId);
-            if (channel instanceof TextChannel) {
+            if ((channel instanceof TextChannel) || (channel instanceof NewsChannel)) {
                 for (const message of messages) {
-                    await (channel as TextChannel).send({ embeds: message});
+                    const sentMessage = await (channel as BaseGuildTextChannel).send({ embeds: message});
+                    if (channel instanceof NewsChannel) {
+                        sentMessage.crosspost();
+                    }
                 }
                 console.log(`Updates sent to ${channelId}`);
             } else {
                 console.error(`${channelId} is not a valid text channel!`)
+                return;
             }
         }
 
