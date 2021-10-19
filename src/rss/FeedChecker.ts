@@ -57,7 +57,7 @@ export default class FeedChecker {
                 fileName = fileName.replace("/_/g", "\\_");
 
                 const embed: MessageEmbed = new MessageEmbed()
-                    .setTitle(fileName + " " + (parsedItem.statusIcon || ':arrows_counterclockwise:'))
+                    .setTitle(fileName + " " + (parsedItem.statusIcon || ''))
                     .setDescription(parsedItem.filePath)
                     .setColor(parsedItem.subject.color)
                     .setTimestamp(originDate)
