@@ -13,7 +13,7 @@ export default class StorageCleaner {
         this.messageStorage.cleanup(); // Run once on init
     }
 
-    public start(): void {
+    public start() {
         Scheduler.scheduleJob(this.configuration.storagecleaninterval, () => {
             this.messageStorage.cleanup();
             this.messageStorage.save();

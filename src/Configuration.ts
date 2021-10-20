@@ -7,13 +7,7 @@ export default interface Configuration {
     historyfor?: number,
     rsspollinterval?: string;
     storagecleaninterval?: string;
-    resourcetypes?: {
-        [key: string]: string;
-    }
-    filestatus?: {
-        [key: string]: string;
-    }
-    subjects?: {
-        [key: string]: Subject;
-    }
+    resourcetypes?: Record<string, string>;
+    filestatus?: Record<string, string>;
+    subjects?: Record<string, Subject>;
 }

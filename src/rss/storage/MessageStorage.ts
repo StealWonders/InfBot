@@ -14,27 +14,27 @@ export default class MessageStorage {
         this.storage = { entries: storage.entries };
     }
 
-    public store(feed: Feed, item: Item): void {
-        if (this.storage.entries[feed.url] == undefined) {
+    public store(feed: Feed, item: Item) {
+        if (!this.storage.entries[feed.url]) {
             this.storage.entries[feed.url] = {};
         }
         this.storage.entries[feed.url][item.link] = item.isoDate;
     }
 
     public contains(feed: Feed, item: Item): boolean {
-        if (this.storage.entries[feed.url] == undefined) return false;
-        if (this.storage.entries[feed.url][item.link] == undefined) return false;
+        if (!this.storage.entries[feed.url]) return false;
+        if (!this.storage.entries[feed.url][item.link]) return false;
         return true;
     }
 
-    public save(): void {
-        fs.writeFile("./storage.json", JSON.stringify(this.storage, null, 4), err => {
+    public save() {
+        fs.writeFile("./storage.json", JSON.stringify(this.storage, null, 4), (err) => {
             if (err) throw err;
         });
     }
 
-    public cleanup(): void {
-        const maxDate: Date = new Date();
+    public cleanup() {
+        const maxDate = new Date();
         maxDate.setDate(maxDate.getDate() - this.configuration.historyfor);
 
         for (const feed in this.storage.entries) {
@@ -44,17 +44,13 @@ export default class MessageStorage {
                     delete this.storage.entries[feed][key];
                 }
             }
-            if (this.countFeedKeys(feed) == 0) {
+            if (this.countFeedKeys(feed) === 0) {
                 delete this.storage.entries[feed];
             }
         }
     }
 
     public countFeedKeys(feed: string): number {
-        let count = 0;
-        for (const key in this.storage.entries[feed]) {
-            count++;
-        }
-        return count;
+        return Object.keys(this.storage.entries[feed]).length
     }
 }

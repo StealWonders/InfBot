@@ -28,7 +28,5 @@ export interface StorageContainer {
 }
 
 export interface FeedStorage {
-    entries?: {
-        [key: string]: StorageContainer;
-    }
+    entries?: Record<string, StorageContainer>;
 }
