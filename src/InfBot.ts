@@ -29,7 +29,6 @@ export default class InfBot extends Client {
 
         this.on("rateLimit", (rateLimitData) => {
             console.log(`Rate limit of ${rateLimitData.limit} has been reached! Timeout for ${rateLimitData.timeout}ms`);
-            rateLimitData.limit
         });
 
         this.login(this.configuration.token);
