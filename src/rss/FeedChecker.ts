@@ -28,77 +28,81 @@ export default class FeedChecker {
     }
 
     public async checkRSS(feed: Feed) {
-        const parser = new Parser();
-        const parsedFeed = await parser.parseURL(feed.url);
+        try {
+            const parser = new Parser();
+            const parsedFeed = await parser.parseURL(feed.url);
 
-        const maxDate = new Date();
-        maxDate.setDate(maxDate.getDate() - this.infBot.configuration.historyfor);
+            const maxDate = new Date();
+            maxDate.setDate(maxDate.getDate() - this.infBot.configuration.historyfor);
 
-        const embeds: MessageEmbed[] = [];
+            const embeds: MessageEmbed[] = [];
 
-        for (const item of parsedFeed.items) {
-            const resourceIcon: string = this.getResourceIcon(item);
-            if (!resourceIcon) continue // Only send non forum items
+            for (const item of parsedFeed.items) {
+                const resourceIcon: string = this.getResourceIcon(item);
+                if (!resourceIcon) continue // Only send non forum items
 
-            // Skip feed entry as it's original date is too far back
-            const originDate = new Date(item.isoDate);
-            if (originDate < maxDate) break; // If the current item is already past the max date then dont check the rest
+                // Skip feed entry as it's original date is too far back
+                const originDate = new Date(item.isoDate);
+                if (originDate < maxDate) break; // If the current item is already past the max date then dont check the rest
 
-            const parsedItem = this.parseItem(item);
-            if (!parsedItem) continue; // If the item is unable to be parsed, skip
+                const parsedItem = this.parseItem(item);
+                if (!parsedItem) continue; // If the item is unable to be parsed, skip
 
-            //Check if the message is already sent (by checking storage)
-            if (this.infBot.messageStorage.contains(feed, item)) continue;
-            this.infBot.messageStorage.store(feed, item);
+                //Check if the message is already sent (by checking storage)
+                if (this.infBot.messageStorage.contains(feed, item)) continue;
+                this.infBot.messageStorage.store(feed, item);
 
-            // Item is not in storage → Send message
-            let fileName: string = parsedItem.fileName;
-            fileName = fileName.replace("/*/g", "\\*");
-            fileName = fileName.replace("/_/g", "\\_");
+                // Item is not in storage → Send message
+                let fileName: string = parsedItem.fileName;
+                fileName = fileName.replace("/*/g", "\\*");
+                fileName = fileName.replace("/_/g", "\\_");
 
-            const embed: MessageEmbed = new MessageEmbed()
-                .setTitle(fileName + " " + (parsedItem.statusIcon || ''))
-                .setDescription(parsedItem.filePath)
-                .setColor(parsedItem.subject.color)
-                .setTimestamp(originDate)
-                .setThumbnail(parsedItem.subject.iconUrl)
-                .setAuthor(parsedItem.subject.name)
-                .setURL(item.link);
+                const embed: MessageEmbed = new MessageEmbed()
+                    .setTitle(fileName + " " + (parsedItem.statusIcon || ''))
+                    .setDescription(parsedItem.filePath)
+                    .setColor(parsedItem.subject.color)
+                    .setTimestamp(originDate)
+                    .setThumbnail(parsedItem.subject.iconUrl)
+                    .setAuthor(parsedItem.subject.name)
+                    .setURL(item.link);
 
-            embeds.push(embed);
-        }
-
-        // embeds = embeds.reverse();
-
-        const messages: MessageEmbed[][] = [];
-
-        while (embeds.length > 0) {
-            const message: MessageEmbed[] = [];
-            while (message.length < 10 && embeds.length > 0) {
-                message.push(embeds.pop());
+                embeds.push(embed);
             }
-            messages.push(message);
-        }
 
-        if (messages.length == 0) return;
+            // embeds = embeds.reverse();
 
-        for (const channelId of feed.channels) {
-            const channel: Channel = await this.infBot.channels.fetch(channelId);
-            if ((channel instanceof TextChannel) || (channel instanceof NewsChannel)) {
-                for (const message of messages) {
-                    const sentMessage = await (channel as BaseGuildTextChannel).send({ embeds: message});
-                    if (channel instanceof NewsChannel) {
-                        sentMessage.crosspost();
-                    }
+            const messages: MessageEmbed[][] = [];
+
+            while (embeds.length > 0) {
+                const message: MessageEmbed[] = [];
+                while (message.length < 10 && embeds.length > 0) {
+                    message.push(embeds.pop());
                 }
-                console.log(`Updates sent to ${channelId}`);
-            } else {
-                console.error(`${channelId} is not a valid text channel!`)
-                return;
+                messages.push(message);
             }
-        }
 
-        this.infBot.messageStorage.save();
+            if (messages.length == 0) return;
+
+            for (const channelId of feed.channels) {
+                const channel: Channel = await this.infBot.channels.fetch(channelId);
+                if ((channel instanceof TextChannel) || (channel instanceof NewsChannel)) {
+                    for (const message of messages) {
+                        const sentMessage = await (channel as BaseGuildTextChannel).send({ embeds: message});
+                        if (channel instanceof NewsChannel) {
+                            sentMessage.crosspost();
+                        }
+                    }
+                    console.log(`Updates sent to ${channelId}`);
+                } else {
+                    console.error(`${channelId} is not a valid text channel!`)
+                    return;
+                }
+            }
+
+            this.infBot.messageStorage.save();
+        } catch (exception) {
+            console.error(exception);
+        }
     }
 
     private getResourceIcon(item: Item): string {
