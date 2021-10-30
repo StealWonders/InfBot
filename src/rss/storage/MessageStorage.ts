@@ -27,6 +27,12 @@ export default class MessageStorage {
         return true;
     }
 
+    public get(feed: Feed, itemUrl: string): Item {
+        if (!this.storage.entries[feed.url]) return undefined;
+        if (!this.storage.entries[feed.url][itemUrl]) return undefined;
+        return { link: itemUrl, isoDate: this.storage.entries[feed.url][itemUrl] };
+    }
+
     public save() {
         fs.writeFile("./storage.json", JSON.stringify(this.storage, null, 4), (err) => {
             if (err) throw err;

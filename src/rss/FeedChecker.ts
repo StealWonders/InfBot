@@ -27,6 +27,14 @@ export default class FeedChecker {
         }
     }
 
+    private isUpdate(feed: Feed, item: Item, parsedItem: ParsedItem) {
+        if (!parsedItem.statusIcon) return false;
+        if (parsedItem.statusIcon != ":arrows_counterclockwise:") return false;
+        if (!this.infBot.messageStorage.contains(feed, item)) return false;
+        if (item.isoDate > this.infBot.messageStorage.get(feed, item.link).isoDate) return true;
+        return false;
+    }
+
     public async checkRSS(feed: Feed) {
         try {
             const parser = new Parser();
@@ -49,8 +57,8 @@ export default class FeedChecker {
                 if (!parsedItem) continue; // If the item is unable to be parsed, skip
 
                 //Check if the message is already sent (by checking storage)
-                if (this.infBot.messageStorage.contains(feed, item)) continue;
-                this.infBot.messageStorage.store(feed, item);
+                if (this.infBot.messageStorage.contains(feed, item) && !this.isUpdate(feed, item, parsedItem)) continue;
+                this.infBot.messageStorage.store(feed, item); // Save item or update
 
                 // Item is not in storage → Send message
                 let fileName: string = parsedItem.fileName;
